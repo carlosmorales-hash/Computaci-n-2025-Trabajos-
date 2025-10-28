@@ -1,1 +1,24 @@
+# Ejemplo: calcular factorial (iterativo y recursivo) y uso desde la línea de comandos
 
+import sys
+
+def factorial_iter(n: int) -> int:
+    if n < 0:
+        raise ValueError("n debe ser >= 0")
+    result = 1
+    for i in range(2, n+1):
+        result *= i
+    return result
+
+def factorial_rec(n: int) -> int:
+    if n < 0:
+        raise ValueError("n debe ser >= 0")
+    return 1 if n <= 1 else n * factorial_rec(n-1)
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Uso: python factorial.py <numero>")
+        sys.exit(1)
+    n = int(sys.argv[1])
+    print(f"factorial_iter({n}) = {factorial_iter(n)}")
+    print(f"factorial_rec({n}) = {factorial_rec(n)}")
